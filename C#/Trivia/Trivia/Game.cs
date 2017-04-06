@@ -6,7 +6,7 @@ namespace Trivia
 {
     public class Game
     {
-        private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() {{0, "Pop"}, {1, "Science"}, {2, "Sports"}, {3, "Rock"}};
+      
 
         private readonly Players _players;
 
@@ -14,20 +14,15 @@ namespace Trivia
 
         bool _isGettingOutOfPenaltyBox;
 
-        Questions _questions = new Questions();
+        readonly Questions _questions = new Questions();
 
         public Game(Players players)
         {
             _players = players;
-            for (var i = 0; i < 50; i++)
-            {
-                _questions.popQuestions.AddLast("Pop Question " + i);
-                _questions.scienceQuestions.AddLast(("Science Question " + i));
-                _questions.sportsQuestions.AddLast(("Sports Question " + i));
-                _questions.rockQuestions.AddLast(_questions.CreateRockQuestion(i));
-            }
+            _questions.GenerateQuestions();
         }
-        
+
+
 
 
         public void Roll(int roll)
@@ -47,8 +42,8 @@ namespace Trivia
                     Console.WriteLine(_players.Current.Name
                             + "'s new location is "
                             + _players.Current.Place);
-                    Console.WriteLine("The category is " + CurrentCategory());
-                    _questions.AskQuestion(CurrentCategory());
+                   
+                    _questions.AskQuestion(_players.Current.Place);
                 }
                 else
                 {
@@ -64,8 +59,8 @@ namespace Trivia
                 Console.WriteLine(_players.Current.Name
                         + "'s new location is "
                         + _players.Current.Place);
-                Console.WriteLine("The category is " + CurrentCategory());
-                _questions.AskQuestion(CurrentCategory());
+                
+                _questions.AskQuestion(_players.Current.Place);
             }
 
         }
@@ -73,10 +68,7 @@ namespace Trivia
 
 
 
-        private string CurrentCategory()
-        {
-            return _categories[_players.Current.Place % 4];
-        }
+
 
         public bool WasCorrectlyAnswered()
         {
