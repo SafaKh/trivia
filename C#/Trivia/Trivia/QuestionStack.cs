@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace Trivia
 {
     internal class QuestionStack
     {
-        private readonly string _category;
+        public readonly string Category;
         public LinkedList<string> Question = new LinkedList<string>();
 
         public QuestionStack(string category)
         {
-            _category = category;
+            Category = category;
         }
 
         public void PickAQuestionAndAsk()
@@ -23,7 +22,7 @@ namespace Trivia
 
         public void Add(int index)
         {
-            Question.AddLast(_category + " Question " + index);
+            Question.AddLast(Category + " Question " + index);
         }
     }
 }
