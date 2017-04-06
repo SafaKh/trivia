@@ -7,16 +7,11 @@ namespace Trivia
     {
 
         private readonly Dictionary<int, string> _categories = new Dictionary<int, string>() { { 0, "Pop" }, { 1, "Science" }, { 2, "Sports" }, { 3, "Rock" } };
-        QuestionStack popQuestions = new QuestionStack();
-        QuestionStack scienceQuestions = new QuestionStack();
-        QuestionStack sportsQuestions = new QuestionStack();
-        QuestionStack rockQuestions = new QuestionStack();
 
-
-        public string CreateRockQuestion(int index)
-        {
-            return "Rock Question " + index;
-        }
+        QuestionStack popQuestions = new QuestionStack("Pop");
+        QuestionStack scienceQuestions = new QuestionStack("Science");
+        QuestionStack sportsQuestions = new QuestionStack("Sports");
+        QuestionStack rockQuestions = new QuestionStack("Rock");
 
         public void AskQuestion(int currentPlayerPlace)
         {
@@ -49,10 +44,10 @@ namespace Trivia
         {
             for (var i = 0; i < 50; i++)
             {
-                popQuestions.Add("Pop",i);
-                scienceQuestions.Add("Science", i);
-                sportsQuestions.Add("Sports", i);
-                rockQuestions.Add("Rock", i);
+                popQuestions.Add(i);
+                scienceQuestions.Add(i);
+                sportsQuestions.Add(i);
+                rockQuestions.Add(i);
             }
         }
     }

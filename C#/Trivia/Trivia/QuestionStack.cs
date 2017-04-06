@@ -7,16 +7,23 @@ namespace Trivia
 {
     internal class QuestionStack
     {
+        private readonly string _category;
         public LinkedList<string> Question = new LinkedList<string>();
+
+        public QuestionStack(string category)
+        {
+            _category = category;
+        }
+
         public void PickAQuestionAndAsk()
         {
             Console.WriteLine(Question.First());
             Question.RemoveFirst();
         }
 
-        public void Add(string category, int index)
+        public void Add(int index)
         {
-            Question.AddLast(category + " Question " + index);
+            Question.AddLast(_category + " Question " + index);
         }
     }
 }
