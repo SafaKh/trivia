@@ -12,9 +12,9 @@ namespace Trivia
         
         public void AskQuestion(int currentPlayerPlace)
         {
-            Console.WriteLine("The category is " + _categories[currentPlayerPlace % 4].Category);
+            Console.WriteLine("The category is " + _categories[currentPlayerPlace % (_categories.Count)].Category);
             
-           _categories[currentPlayerPlace % 4].PickAQuestionAndAsk();
+           _categories[currentPlayerPlace % (_categories.Count)].PickAQuestionAndAsk();
            
         }
 
