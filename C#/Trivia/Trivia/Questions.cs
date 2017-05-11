@@ -6,8 +6,8 @@ namespace Trivia
     public class Questions
     {
 
-        private readonly Dictionary<int, QuestionStack> _categories = new Dictionary<int, QuestionStack>() { { 0, new QuestionStack("Pop") }, { 1, new QuestionStack("Science") }, 
-        { 2, new QuestionStack("Sports") }, { 3, new QuestionStack("Rock")} };
+        private readonly List<QuestionStack> _categories = new List<QuestionStack>() { new QuestionStack("Pop"),  new QuestionStack("Science"), 
+        new QuestionStack("Sports"), new QuestionStack("Rock") };
 
         
         public void AskQuestion(int currentPlayerPlace)
@@ -20,11 +20,11 @@ namespace Trivia
 
         public void GenerateQuestions()
         {
-            foreach (KeyValuePair<int, QuestionStack> variable in _categories)
+            foreach (var variable in _categories)
             {
                 for (var i = 0; i < 50; i++) 
                 {
-                    variable.Value.Add(i);
+                    variable.Add(i);
                 }
 
             }
