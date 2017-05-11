@@ -12,17 +12,17 @@ namespace Trivia
         
         public void AskQuestion(int currentPlayerPlace)
         {
-            Console.WriteLine("The category is " + _categories[currentPlayerPlace % (_categories.Count)].Category);
+            Console.WriteLine("The category is " + _categories[currentPlayerPlace % _categories.Count].Category);
             
-           _categories[currentPlayerPlace % (_categories.Count)].PickAQuestionAndAsk();
+           _categories[currentPlayerPlace % _categories.Count].PickAQuestionAndAsk();
            
         }
 
         public void GenerateQuestions()
         {
-            for (var i = 0; i < 50; i++)
+            foreach (KeyValuePair<int, QuestionStack> variable in _categories)
             {
-                foreach (KeyValuePair<int, QuestionStack> variable in _categories)
+                for (var i = 0; i < 50; i++) 
                 {
                     variable.Value.Add(i);
                 }
