@@ -13,7 +13,7 @@ namespace Trivia.Presentation
         public void Dispatch<TEvent>(TEvent @event)
         {
 
-            if (@event is PlayerRolledDice)
+            if (@event.GetType() ==typeof(PlayerRolledDice))
             {
                 var playerRolledDice = @event as PlayerRolledDice;
                 Console.WriteLine(playerRolledDice.CurrentName + " is the current player");
